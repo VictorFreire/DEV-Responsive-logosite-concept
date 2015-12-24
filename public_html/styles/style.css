@@ -8,32 +8,51 @@ and open the template in the editor.
     Author     : Victor Freire
 */
 
-/*@font-face {
-    font-family: 'Masterblast';
-    src: url(../fonts/Masterblast.otf) format('opentype'), 
-         url(../fonts/Masterblast.svg) format('svg'),
-         url(../fonts/Urba.ttf) format('truetype'),
-         url(../fonts/Urba.otf) format('opentype');
-    font-weight: normal;
-}*/
 @import url(https://fonts.googleapis.com/css?family=Ubuntu);
 
 html, body {
     width: 100%;
     height: 100%;
     margin: 0;
-    background: -webkit-radial-gradient(top, #ddd, #ddd, #ddd, #ddd, #aaa, #aaa);
-    background: -moz-radial-gradient(top, #ddd, #ddd, #ddd, #ddd, #aaa, #aaa);
-    background: -ms-radial-gradient(top, #ddd, #ddd, #ddd, #ddd, #aaa, #aaa);
+    background: radial-gradient(ellipse at top, #ddd, #ddd, #ddd, #ddd, #aaa, #aaa);
+    font-family: 'Ubuntu', sans-serif;
     overflow: hidden;
-    animation: blur 1.5s linear .5s both;
+    
 }
+.bar {
+    position: absolute;
+    top: 0;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 2vw;
+    background: transparent;
+    box-shadow: inset 0 10px 10px -5px rgba(255, 255, 255, .5), inset 0 -15px 10px -5px rgba(255, 255, 255, .2), 0 0 10px 2px #777;
+    animation: bar-anim 3.5s ease both;
+    z-index: 99999;
+}
+#res {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 100%;
+    height: 1vw;
+    font-size: 1vw;
+    font-weight: bold;
+    color: #777;
+    text-align: center;
+    text-shadow: 0px 1px 0px #f8f8f8;
+    z-index: 9999;
+}
+
 a, a:active, a:focus {
     text-transform: none;
     text-decoration: none;
 }
 span {
-    font-family: 'Ubuntu', sans-serif;
     font-size: 6.5vw;
     color: #222;
     text-shadow: 0px 1px 0px #555, 
@@ -46,65 +65,13 @@ span {
     position: absolute;
     top:  0;
     right: -5%;
-    font: 5vw 'Ubuntu', sans-serif;
+    font-size: 5vw;
 }
-
-.flip:focus span {
-    -webkit-animation: span-focus-anim 1.2s ease 0s both;
-    -moz-animation: span-focus-anim 1.2s ease 0s both;
-    animation: span-focus-anim 1.2s ease 0s both;
-}
-.flip:focus .close {
-    pointer-events: none;
-    display: block;
-    animation-name: span-focus-anim;
-    animation-delay: .5s;
-}
-@-webkit-keyframes span-focus-anim {
-    0% {
-        opacity: 0;
-        letter-spacing: -2vw;
-    }
-    100% {
-        opacity:1;
-        letter-spacing: 0;
-    }
-}
-@-moz-keyframes span-focus-anim {
-    0% {
-        opacity: 0;
-        letter-spacing: -2vw;
-    }
-    100% {
-        opacity:1;
-        letter-spacing: 0;
-    }
-}
-@-ms-keyframes span-focus-anim {
-    0% {
-        opacity: 0;
-        letter-spacing: -2vw;
-    }
-    100% {
-        opacity:1;
-        letter-spacing: 0;
-    }
-}
-@keyframes span-focus-anim {
-    0% {
-        opacity: 0;
-        letter-spacing: -2vw;
-    }
-    100% {
-        opacity:1;
-        letter-spacing: 0;
-    }
-}
-
 .dev {
     width: 70%;
     height: 100%;
     margin: 0 auto;
+    animation: blur 2s linear both;
 }
 #logo {
     display: block;
@@ -113,12 +80,6 @@ span {
     margin-top: -10%;
     width: 100%;
     color: #333;
-    /*  font-family: 'Masterblast';
-    font-size: 27vw;
-    letter-spacing: 4vw;
-    text-indent: 4vw;
-    text-align: center;
-    text-shadow: -1px 1px 2px #fff, 1px 1px 2px #fff; */
 }
 svg {
     width: 100%;
@@ -130,228 +91,43 @@ svg {
     position: absolute;
     top: 0;
     left: 40%;
+    animation: blur 2s linear both;
     z-index: 99;
 }
+
 .flip {
-    float: left;
+    display: block;
     position: relative;
+    width: 100%;
     top: 40%;
     margin-top: -29.5%;
     margin-bottom: 32.6%;
-    width: 100%;
     background: #333;
     text-align: center;
     cursor: pointer;
-    -webkit-transform-origin: top;
-    -moz-transform-origin: top;
     transform-origin: top;
     box-shadow: inset 0px 0px 8px 0px #000, 0px 1px 1px 0px #fff;
-    -webkit-animation: flip-anim 0.5s ease-in-out both;
-    -moz-animation: flip-anim 0.5s ease-in-out both;
     animation: flip-anim 0.5s ease-in-out both;
     z-index: 999;
 }
-
-@-webkit-keyframes flip-anim {
-    100% {
-        -webkit-transform: perspective(21) rotateX(-4deg);
-    }
-    80% {
-        -webkit-transform: perspective(21) rotateX(-5deg);
-    }
-    60% {
-        -webkit-transform: perspective(21) rotateX(-3deg);
-    }
-    40% {
-        -webkit-transform: perspective(21) rotateX(-6deg);
-    }
-    10% {
-        -webkit-transform: perspective(21) rotateX(0.5deg);
-    }
-    0% {
-        -webkit-transform: perspective(21) rotateX(0deg);
-    }
+.flip:focus span {
+    animation: span-focus-anim 1.2s ease 0s both;
 }
-@-moz-keyframes flip-anim {
-    100% {
-        -moz-transform: perspective(22px) rotateX(-4deg);
-    }
-    80% {
-        -moz-transform: perspective(22px) rotateX(-5deg);
-    }
-    60% {
-        -moz-transform: perspective(22px) rotateX(-3deg);
-    }
-    40% {
-        -moz-transform: perspective(22px) rotateX(-6deg);
-    }
-    10% {
-        -moz-transform: perspective(22px) rotateX(0.5deg);
-    }
-    0% {
-        -moz-transform: perspective(22px) rotateX(0deg);
-    }
+.flip:focus .close {
+    pointer-events: none;
+    display: block;
+    animation-name: span-focus-anim;
+    animation-delay: .5s;
 }
-@-ms-keyframes flip-anim {
-    100% {
-        -ms-transform: perspective(22px) rotateX(-4deg);
-    }
-    80% {
-        -ms-transform: perspective(22px) rotateX(-5deg);
-    }
-    60% {
-        -ms-transform: perspective(22px) rotateX(-3deg);
-    }
-    40% {
-        -ms-transform: perspective(22px) rotateX(-6deg);
-    }
-    10% {
-        -ms-transform: perspective(22px) rotateX(0.5deg);
-    }
-    0% {
-        -ms-transform: perspective(22px) rotateX(0deg);
-    }
-}
-@keyframes flip-anim {
-    100% {
-        transform: perspective(22px) rotateX(-4deg);
-    }
-    80% {
-        transform: perspective(22px) rotateX(-5deg);
-    }
-    60% {
-        transform: perspective(22px) rotateX(-3deg);
-    }
-    40% {
-        transform: perspective(22px) rotateX(-6deg);
-    }
-    10% {
-        transform: perspective(22px) rotateX(0.5deg);
-    }
-    0% {
-        transform: perspective(22px) rotateX(0deg);
-    }
-}
-
-.flip:active, .flip:focus {
-    -webkit-animation: flip-active-focus-anim 0.8s ease-in-out both;
-    -moz-animation: flip-active-focus-anim 0.8s ease-in-out both;
+.flip:focus {
+    position: absolute;
+    height: 90%;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    margin: auto;
     animation: flip-active-focus-anim 0.8s ease both;
     outline: 0;
     z-index: 9999;
-}
-@-webkit-keyframes flip-active-focus-anim {
-    0% {
-        -webkit-transform: perspective(21) rotateX(-5deg);
-    }
-    40% {
-        -webkit-transform: perspective(21) rotateX(0deg);
-    }
-    70% {
-        position: absolute;
-        margin: 0;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: auto;
-        box-shadow: none;
-    }
-    100% {
-        position: absolute;
-        margin: 0;
-        top: 0;
-        left: -146.5%;
-        width: 380%;
-        height: 90%;
-    }
-}
-
-@-moz-keyframes flip-active-focus-anim {
-    0% {
-        -moz-transform: perspective(21) rotateX(-5deg);
-    }
-    40% {
-        -moz-transform: perspective(21) rotateX(0deg);
-    }
-    70% {
-        position: absolute;
-        margin: 0;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: auto;
-    }
-    100% {
-        position: absolute;
-        margin: 0;
-        top: 0;
-        left: -170%;
-        width: 426.7%;
-        height: 98%;
-    }
-}
-@-ms-keyframes flip-active-focus-anim {
-    0% {
-        -ms-transform: perspective(21) rotateX(-5deg);
-    }
-    40% {
-        -ms-transform: perspective(21) rotateX(0deg);
-    }
-    70% {
-        position: absolute;
-        margin: 0;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: auto;
-    }
-    100% {
-        position: absolute;
-        margin: 0;
-        top: 0;
-        left: -170%;
-        width: 426.7%;
-        height: 98%;
-    }
-}
-@keyframes flip-active-focus-anim {
-    0% {
-        transform: perspective(21) rotateX(-5deg);
-    }
-    40% {
-        transform: perspective(21) rotateX(0deg);
-    }
-    70% {
-        position: absolute;
-        margin: 0;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: auto;
-    }
-    100% {
-        position: absolute;
-        margin: 0;
-        top: 0;
-        left: -170%;
-        width: 426.7%;
-        height: 98%;
-    }
-}
-@-webkit-keyframes blur {
-    0% {
-        -webkit-filter: blur(0);
-    }
-    25% {
-        -webkit-filter: blur(1px);
-    }
-    50% {
-        -webkit-filter: blur(3px);
-    }
-    75% {
-        -webkit-filter: blur(2px);
-    }
-    100% {
-        -webkit-filter: blur(0);
-    }
 }
