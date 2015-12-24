@@ -1,0 +1,115 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 15/12/2015, 18:58:57
+    Author     : Victor
+*/
+
+
+@keyframes blur {
+    0% {
+        -webkit-filter: blur(0);
+        filter: blur(0);
+    }
+    25% {
+        -webkit-filter: blur(5px);
+        filter: blur(5px);
+    }
+    50% {
+        -webkit-filter: blur(7px);
+        filter: blur(7px);
+    }
+    75% {
+        -webkit-filter: blur(6px);
+        filter: blur(6px);
+    }
+    100% {
+        -webkit-filter: blur(0);
+        filter: blur(0);
+    }
+}
+@keyframes bar-anim {
+    0% {
+        top: -2vw;
+    }
+    25%, 75% {
+        top: 0;
+    }
+    85% {
+        border-radius: 0;
+    }
+    100% {
+        top: -2vw;
+        border-radius: 0px 0px 50% 50%;
+    }   
+}
+@keyframes span-focus-anim {
+    0% {
+        opacity: 0;
+        letter-spacing: -2vw;
+    }
+    100% {
+        opacity:1;
+        letter-spacing: 0;
+    }
+}
+@keyframes flip-anim {
+    100% {
+        transform: perspective(22px) rotateX(-4deg);
+    }
+    80% {
+        transform: perspective(22px) rotateX(-5deg);
+    }
+    60% {
+        transform: perspective(22px) rotateX(-3deg);
+    }
+    40% {
+        transform: perspective(22px) rotateX(-6deg);
+    }
+    10% {
+        transform: perspective(22px) rotateX(0.5deg);
+    }
+    0% {
+        transform: perspective(22px) rotateX(0deg);
+    }
+}
+@keyframes flip-active-focus-anim {
+    0% {
+        position: relative;
+        width: 100%;
+        height: auto;
+        top:40%;
+        margin-top: -29.5%;
+        margin-bottom: 32.6%;
+        transform: perspective(22px) rotateX(-5deg);
+    }
+    50% {
+        position: absolute;
+        width: 100%;
+        height: 90%;
+        transform: perspective(22px) rotateX(0);
+        transform-origin: 50% 50%;
+    }
+    70% {
+        width: 100%;
+        height: 90%;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
+        box-shadow: none;
+    }
+    100% {
+        width: 380%;
+        height: 90%;
+        top: 0;
+        bottom: 0;
+        left: -146.5%;
+        right: 0;
+        margin: auto;
+    }
+}
